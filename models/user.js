@@ -4,23 +4,25 @@ const crypto = require('crypto')
 const config = require('../config')
 const schemaOptions = {
     timestamps: { createdAt: 'created_at', updatedAt: 'updated_at' },
-  };
+};
 const User = new Schema({
-    firstName:String,
+    firstName: String,
     lastName: String,
-    emailAddress:{type:String, unique:true},
+    emailAddress: { type: String, unique: true },
     password: String,
     admin: { type: Boolean, default: false },
-    countryOfPractice:{type:String},
-    lawFirmSize:String,
-    phoneNumber:String,
-    blocked: {type: Boolean, default: false},
-    verified: {type: Boolean, default: false},
-    customFields:[],
-    account:Object,
-    target:Object,
-    registeredOn:Object,
-    subscriptionEndOn:Object
+    phoneNumber: String,
+    blocked: { type: Boolean, default: false },
+    verified: { type: Boolean, default: false },
+    account: Object,
+    target: Object,
+    registeredOn: Object,
+    subscriptionEndOn: Object,
+    streetAddress: String,
+    postalCode: String,
+    state: String
+
+
 }, schemaOptions)
 
 
@@ -30,27 +32,44 @@ const User = new Schema({
 
 
 // create new User document
-User.statics.create = function(password,
+User.statics.create = function (password,
     firstName,
-  lastName,
-  emailAddress,
-  countryOfPractice,
-  lawFirmSize,
-  phoneNumber,
-  admin) {
-    const encrypted = crypto.createHmac('sha1', config.secret)
-                      .update(password)
-                      .digest('base64')
-
-    const user = new this({
-      firstName,
     lastName,
     emailAddress,
-    countryOfPractice,
-    lawFirmSize,
-        password: encrypted,
+    admin,
+    phoneNumber,
+    blocked,
+    verified,
+    account,
+    target,
+    registeredOn,
+    subscriptionEndOn,
+    streetAddress,
+    postalCode,
+    state
+
+) {
+    const encrypted = crypto.createHmac('sha1', config.secret)
+        .update(password)
+        .digest('base64')
+
+    const user = new this({
+        firstName,
+        lastName,
+        emailAddress,
+        admin,
         phoneNumber,
-        admin
+        blocked,
+        verified,
+        account,
+        target,
+        registeredOn,
+        subscriptionEndOn,
+        streetAddress,
+        postalCode,
+        state,
+        password: encrypted,
+
     })
 
     // return the Promise
@@ -58,23 +77,23 @@ User.statics.create = function(password,
 }
 
 // find one user by using username
-User.statics.findOneByEmailAddress = function(emailAddress) {
+User.statics.findOneByEmailAddress = function (emailAddress) {
     return this.findOne({
         emailAddress
     }).exec()
 }
 
 // verify the password of the User documment
-User.methods.verify = function(password) {
+User.methods.verify = function (password) {
     const encrypted = crypto.createHmac('sha1', config.secret)
-                      .update(password)
-                      .digest('base64')
+        .update(password)
+        .digest('base64')
     console.log(this.password === encrypted)
 
     return this.password === encrypted
 }
 
-User.methods.assignAdmin = function() {
+User.methods.assignAdmin = function () {
     this.admin = true
     return this.save()
 }
