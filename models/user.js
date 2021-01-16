@@ -6,6 +6,7 @@ const schemaOptions = {
     timestamps: { createdAt: 'created_at', updatedAt: 'updated_at' },
 };
 const User = new Schema({
+
     firstName: String,
     lastName: String,
     emailAddress: { type: String, unique: true },
