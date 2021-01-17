@@ -16,8 +16,8 @@ const Property = new Schema({
     newProposedValueAmount:String,
 targetValueAmount:String,
 finalSavings:String,
-assignedTo:{ type: Schema.Types.ObjectId, ref: "User" }
-
+assignedTo:{ type: Schema.Types.ObjectId, ref: "User" },
+deleted:{type:Boolean, default: false}
 
 })
 
