@@ -18,7 +18,7 @@ exports.createProperty = (req, res) => {
 //Delete a task
 exports.deleteProperty = (req, res) => {
 // console.log(req.params.id)
-    Property.findByIdAndRemove(req.params.id).
+    Property.findByIdAndUpdate(req.params.id, {deleted: true}).
         then(data => {
             res.status(200).json({status: true, message:"Property Removed", data})
 
@@ -29,7 +29,7 @@ exports.deleteProperty = (req, res) => {
 }
 
 //Show all Properties
-exports.showAllTasks = (req, res) => {
+exports.showAllProperties = (req, res) => {
 
     Property.find({}).
         then(data => {
@@ -58,7 +58,7 @@ exports.viewProperty = (req, res) => {
 
     Property.findById(req.params.id).
         then(data => {
-            res.status(200).json({status: true, message:"Property fetched", data})
+            res.status(200).json({status: true, message:"Properties fetched", data})
 
         }).catch(error => {
         res.status(200).json({status: false, message:error})
