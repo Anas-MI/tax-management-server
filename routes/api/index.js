@@ -23,7 +23,7 @@ const Subscription = require("./subscription")
 const Footer = require("./footer")
 const logs = require("./logs")
 const aboutus = require('./aboutUs')
-
+const properties = require('./properties')
 
 router.use('/contactus', contactus)
 router.use('/logs', logs)
@@ -50,5 +50,7 @@ router.use('/subscription', Subscription)
 router.use("/footer", Footer)
 router.use('/aboutus/', aboutus)
 
+//New Routes for tax management
+router.use('/properties', properties )
 
 module.exports = router
