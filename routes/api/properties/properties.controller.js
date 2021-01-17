@@ -58,7 +58,7 @@ exports.viewProperty = (req, res) => {
 
     Property.findById(req.params.id).
         then(data => {
-            res.status(200).json({status: true, message:"Properties fetched", data})
+            res.status(200).json({status: true, message:"Property fetched", data})
 
         }).catch(error => {
         res.status(200).json({status: false, message:error})
