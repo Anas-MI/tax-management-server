@@ -37,7 +37,7 @@ const User = new Schema({
 
 
 // create new User document
-User.statics.create = function (password,
+User.statics.create = function (
     firstName,
     lastName,
     emailAddress,
