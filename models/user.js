@@ -21,7 +21,11 @@ const User = new Schema({
     subscriptionEndOn: Object,
     streetAddress: String,
     postalCode: String,
-    state: String
+    state: String,
+    licenseType:String,
+    licenseNumber:String,
+   userType:String,
+   
 
 
 }, schemaOptions)
@@ -33,7 +37,7 @@ const User = new Schema({
 
 
 // create new User document
-User.statics.create = function (password,
+User.statics.create = function (
     firstName,
     lastName,
     emailAddress,
@@ -47,7 +51,11 @@ User.statics.create = function (password,
     subscriptionEndOn,
     streetAddress,
     postalCode,
-    state
+    state,
+    password,
+    licenseType,
+    licenseNumber,
+   userType
 
 ) {
     const encrypted = crypto.createHmac('sha1', config.secret)
@@ -70,6 +78,9 @@ User.statics.create = function (password,
         postalCode,
         state,
         password: encrypted,
+        licenseType,
+    licenseNumber,
+   userType
 
     })
 
