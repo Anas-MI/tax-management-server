@@ -55,7 +55,7 @@ exports.editProperty = (req, res) => {
 
 exports.viewProperty = (req, res) => {
 
-    Property.findById(req.params.id).
+    Property.findById(req.params.id).populate("tasks").
         then(data => {
             res.status(200).json({status: true, message:"Property fetched", data})
 
@@ -68,7 +68,7 @@ exports.viewProperty = (req, res) => {
 //fetch for one user
 exports.viewSpecific = (req, res) => {
 
-    Property.find({userId:req.params.id}).
+    Property.find({userId:req.params.id}).populate("tasks").
         then(data => {
             res.status(200).json({status: true, message:"Property Fetched", data})
 
