@@ -14,10 +14,11 @@ const Property = new Schema({
     documents:Array,
     propertyValueAmount:String,
     newProposedValueAmount:String,
-targetValueAmount:String,
-finalSavings:String,
-assignedTo:{ type: Schema.Types.ObjectId, ref: "User" },
-deleted:{type:Boolean, default: false}
+    targetValueAmount:String,
+    finalSavings:String,
+    assignedTo:{ type: Schema.Types.ObjectId, ref: "User" },
+    deleted:{type:Boolean, default: false},
+    description:String
 
 })
 

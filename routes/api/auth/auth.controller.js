@@ -42,7 +42,11 @@ exports.register = (req, res) => {
         subscriptionEndOn,
         streetAddress,
         postalCode,
-        state
+        State,
+        licenseType,
+        licenseNumber,
+       userType
+    
     } = req.body
 
     // let admin = req.body.admin ? true:false
@@ -66,7 +70,11 @@ exports.register = (req, res) => {
                 subscriptionEndOn,
                 streetAddress,
                 postalCode,
-                state
+                State,
+                licenseType,
+                licenseNumber,
+               userType
+            
 
 
             )
@@ -232,7 +240,8 @@ exports.login = (req, res) => {
 
 
 exports.loginWithEmail = (req, res) => {
-    User.findById(req.body.id).then(data => {
+    console.log("request",req.body)
+    User.findById(req.body.userid).then(data => {
         res.status(200).json({
             message: "User Fetched", data
         })

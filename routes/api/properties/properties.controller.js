@@ -5,7 +5,7 @@ const Property = require('../../../models/properties')
 exports.createProperty = (req, res) => {
 
     let property = new Property(req.body)
-
+         console.log("property list",property)
         property.save().then(data => {
             res.status(200).json({status: true, message:"Property saved", data})
 
@@ -17,7 +17,6 @@ exports.createProperty = (req, res) => {
 
 //Delete a task
 exports.deleteProperty = (req, res) => {
-// console.log(req.params.id)
     Property.findByIdAndUpdate(req.params.id, {deleted: true}).
         then(data => {
             res.status(200).json({status: true, message:"Property Removed", data})
@@ -43,7 +42,7 @@ exports.showAllProperties = (req, res) => {
 
 //Edit Property
 exports.editProperty = (req, res) => {
-
+    console.log("request aksjhat",req.body)
     Property.findByIdAndUpdate(req.params.id, req.body, {new: true}).
         then(data => {
             res.status(200).json({status: true, message:"Property updated", data})
