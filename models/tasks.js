@@ -13,7 +13,9 @@ const Tasks = new Schema({
 userId:{type:Schema.Types.ObjectId, ref:"User"},
 status:{type:Boolean, default: false},
 assignee:{type:Schema.Types.ObjectId, ref:"Contacts"},
-reminder:Object
+reminder:Object, 
+property: Boolean, 
+propertyId: {type:Schema.Types.ObjectId, ref:"Properties"}
 },schemaOptions)
 
 module.exports = mongoose.model('Tasks', Tasks)
