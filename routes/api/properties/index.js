@@ -8,6 +8,7 @@ router.get("/showall", controller.showAllProperties)
 router.post("/edit/:id", controller.editProperty)
 router.get("/view/:id", controller.viewProperty)
 router.get("/viewforuser/:id", controller.viewSpecific)
+router.get("/viewPropertyForAgent/:id", controller.viewPropertyForAgent)
 
 
 module.exports = router
