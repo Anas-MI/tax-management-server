@@ -67,7 +67,7 @@ exports.viewProperty = (req, res) => {
 
 exports.viewPropertyForAgent = (req, res) => {
 
-    Property.find({assignedTo:req.params.id}).populate("tasks").
+    Property.find({assignedTo:req.params.id}).populate("tasks User").
         then(data => {
             res.status(200).json({status: true, message:"Property fetched", data})
 
