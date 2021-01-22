@@ -65,6 +65,19 @@ exports.viewProperty = (req, res) => {
         })
 }
 
+exports.viewPropertyForAgent = (req, res) => {
+
+    Property.find({assignedTo:req.params.id}).populate("tasks").
+        then(data => {
+            res.status(200).json({status: true, message:"Property fetched", data})
+
+        }).catch(error => {
+        res.status(200).json({status: false, message:error})
+
+        })
+}
+
+
 //fetch for one user
 exports.viewSpecific = (req, res) => {
 
