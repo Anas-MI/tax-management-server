@@ -3,7 +3,7 @@ const List = require('../../../models/lists')
 
 // Create New task
 exports.createTask = (req, res) => {
-
+console.log("tasks created",req.body)
     let Tasks = new tasks(req.body)
 
         Tasks.save().then(data => {

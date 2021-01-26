@@ -9,13 +9,13 @@ const Tasks = new Schema({
     dueDate:Date,
     description:String,
     priority:String,
-   matter:{type: Schema.Types.ObjectId, ref:"Matters"},
-userId:{type:Schema.Types.ObjectId, ref:"User"},
-status:{type:Boolean, default: false},
-assignee:{type:Schema.Types.ObjectId, ref:"Contacts"},
-reminder:Object, 
-property: Boolean, 
-propertyId: {type:Schema.Types.ObjectId, ref:"Properties"}
+    matter:{type: Schema.Types.ObjectId, ref:"Matters"},
+    userId:{type:Schema.Types.ObjectId, ref:"User"},
+    status:{type:Boolean, default: false},
+    assignee:{type:Schema.Types.ObjectId, ref:"Contacts"},
+    reminder:Object,   
+    property: Boolean, 
+    propertyId: {type:Schema.Types.ObjectId, ref:"Properties"}
 },schemaOptions)
 
 module.exports = mongoose.model('Tasks', Tasks)

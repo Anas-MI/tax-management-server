@@ -25,6 +25,7 @@ const User = new Schema({
     licenseType:String,
     licenseNumber:String,
     userType:String,
+    reminder: {type: Boolean, default: false }
    
 
 
@@ -54,7 +55,8 @@ User.statics.create = function (password,
     State,
     licenseType,
     licenseNumber,
-    userType
+    userType,
+    reminder
 
 ) {
     const encrypted = crypto.createHmac('sha1', config.secret)
@@ -79,7 +81,8 @@ User.statics.create = function (password,
         password: encrypted,
         licenseType,
     licenseNumber,
-   userType
+   userType,
+   reminder
 
     })
 
