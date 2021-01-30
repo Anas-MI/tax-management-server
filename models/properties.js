@@ -20,7 +20,7 @@ const Property = new Schema({
     deleted:{type:Boolean, default: false},
     description:String,
     tasks:[{ type: Schema.Types.ObjectId, ref: "Tasks" }],
-    meta:Object
+    
   })
 
 module.exports = mongoose.model("Properties", Property)
