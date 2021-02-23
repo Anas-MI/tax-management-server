@@ -1,14 +1,13 @@
 const mongoose = require("mongoose")
 const Schema = mongoose.Schema
 
-const Property = new Schema({
+const HomeProperty = new Schema({
     property: String,
     status: String,
     clientReferenceNumber: String,
     openDate: Date,
     closeDate: Date,
     pendingDate: Date,
-    userId: { type: Schema.Types.ObjectId, ref: "User" },
     propertyAddress:Object,
     currentStatus:String,
     documents:Array,
@@ -24,4 +23,4 @@ const Property = new Schema({
     
   })
 
-module.exports = mongoose.model("Properties", Property)
+module.exports = mongoose.model("HomeProperties", HomeProperty)

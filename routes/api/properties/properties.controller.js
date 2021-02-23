@@ -5,7 +5,6 @@ const Property = require('../../../models/properties')
 exports.createProperty = (req, res) => {
 
     let property = new Property(req.body)
-         console.log("property list",property)
         property.save().then(data => {
             res.status(200).json({status: true, message:"Property saved", data})
 
